@@ -1,4 +1,4 @@
-import React from 'react';
+
 import vedio from '../../assets/pagenotFound.mp4'
 import './error.css'
 
