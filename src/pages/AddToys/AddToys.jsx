@@ -1,6 +1,7 @@
 import React from 'react';
 
 const ToyForm = () => {
+    
 
     const handleSubmit =(event)=>{
         event.preventDefault()
@@ -17,7 +18,7 @@ const ToyForm = () => {
         const userInfo = {
             photo, name, sellerName, sellerEmail, category, price, rating, availablequantity, description
         }
-        fetch('http://localhost:5000/toys',{
+        fetch('https://assignment-11-server-five-omega.vercel.app/toys',{
             method:"POST",
             headers:{
                 "content-type":"application/json"
