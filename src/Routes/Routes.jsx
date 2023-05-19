@@ -6,9 +6,11 @@ import Main from "../layouts/Main";
 import Home from "../pages/Home/Home/Home";
 import About from "../pages/About/About";
 import Error from "../layouts/Error/Error";
-import AllToys from "../pages/AllToys/AllToys";
 import MyToys from "../pages/MyToys/MyToys";
 import AddToys from "../pages/AddToys/AddToys";
+import Register from "../layouts/Register/Register";
+import AllToys from "../pages/AllToys/AllToys";
+import Blogs from "../pages/Blogs/Blogs";
 
 
   const router = createBrowserRouter([
@@ -28,6 +30,8 @@ import AddToys from "../pages/AddToys/AddToys";
                 {
                     path:'/alltoys',
                     element:<AllToys></AllToys>
+                  
+                   
                 },
                 {
                     path:'/mytoys',
@@ -36,6 +40,14 @@ import AddToys from "../pages/AddToys/AddToys";
                 {
                     path:'/addtoy',
                     element:<AddToys></AddToys>
+                },
+                {
+                    path:'/register',
+                    element:<Register></Register>
+                },
+                {
+                    path:'/blog',
+                    element:<Blogs></Blogs>
                 }
             ]
          }

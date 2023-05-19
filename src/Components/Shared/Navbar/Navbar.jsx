@@ -43,7 +43,10 @@ const Navbar = () => {
                 Add a Toy
               </Link>
               <Link to='/blog' className=" hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-               
+               blog
+              </Link>
+              <Link to='/register' className=" hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+               Register
               </Link>
             </div>
           </div>
@@ -68,6 +71,9 @@ const Navbar = () => {
             </Link>
             <Link to='/blog' href="#" className=" hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
               blog
+            </Link>
+            <Link to='/register' href="#" className=" hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+              register
             </Link>
           </div>
         </div>
