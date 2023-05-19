@@ -4,7 +4,7 @@ import {
   } from "react-router-dom";
 import Main from "../layouts/Main";
 import Home from "../pages/Home/Home/Home";
-import About from "../pages/About/About";
+
 import Error from "../layouts/Error/Error";
 import MyToys from "../pages/MyToys/MyToys";
 import AddToys from "../pages/AddToys/AddToys";
@@ -24,10 +24,7 @@ import Login from "../layouts/Login/Login";
                     path:'/',
                     element:<Home></Home>
                 },
-                {
-                    path:'/about',
-                    element:<About></About>
-                },
+              
                 {
                     path:'/alltoys',
                     element:<AllToys></AllToys>

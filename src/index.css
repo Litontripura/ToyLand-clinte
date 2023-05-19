@@ -3,10 +3,8 @@
 @tailwind utilities;
 
 .main{
-    background: #4249c7;
+    background-image: linear-gradient(to bottom, #011f38, rgb(168, 6, 168));
+
     height: 100%;
+    
 }
-body {
-    overflow: hidden;
-  }
-  

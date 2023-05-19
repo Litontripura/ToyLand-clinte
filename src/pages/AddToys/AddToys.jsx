@@ -36,8 +36,10 @@ const ToyForm = () => {
   return (
   
     <>
-      <form onSubmit={handleSubmit} className="bg-white">
-      <div className='relative md:grid grid-cols-2 gap-6  shadow-md rounded px-8 pt-6 pb-8 mb-4 md:w-1/2 lg:w-1/2 mx-auto'>
+      <form onSubmit={handleSubmit} className="relative pt-5 ">
+        <h1 className="text-center font-bold text-2xl text-blue-600">Add A toy</h1>
+     <div>
+     <div className=' md:grid grid-cols-2 gap-6 bg-slate-300 shadow-2xl rounded px-8 pt-6 pb-8 mb-4 md:w-1/2 lg:w-1/2 mx-auto'>
       <div className="mb-4">
         <label className="block text-gray-700 text-sm font-bold mb-2" >
           Toys Picture
@@ -91,15 +93,18 @@ const ToyForm = () => {
         <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="quantity" type="number" name='availablequantity' min="0" placeholder="Available Quantity" />
       </div>
       <div className="mb-4">
-        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
+        <label className="block text-gray-700 text-sm font-bold mb-2 w-full" htmlFor="description">
           Description
         </label>
-        <textarea className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="description" name='description' placeholder="Add toys description" rows="5" />
+        <textarea className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-10" id="description" name='description' placeholder="Add toys description" rows="5" />
       </div>
+     
       </div>
-       <div className='text-center absolute bottom-0'>
-       <button className=' ' type="submit">Add toy</button>
+     </div>
+      <div className='absolute text-center  bottom-0 w-full py-5 '>
+       <button className='p-2 rounded-lg text-lg font-bold text-white w-[500px] bg-blue-500 mx-auto' type="submit">Add toy</button>
        </div>
+       
     </form>
     
     </>
