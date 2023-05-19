@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 .main{
-    background: #030760;
+    background: #4249c7;
     height: 100%;
 }
+body {
+    overflow: hidden;
+  }
+  

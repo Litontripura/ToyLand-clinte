@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars,FaTimes } from 'react-icons/fa';
+import ActiveLink from '../../../Routes/ActiveLink/ActiveLink';
+import logo from '../../../assets/logo/logo.png'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,7 +16,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
-            <img className="h-8 w-8" src="/logo.png" alt="Logo" />
+            <img className="h-8 w-8" src={logo} alt="Logo" />
           </div>
           <div className="-mr-2 flex md:hidden">
             <span
@@ -29,25 +31,25 @@ const Navbar = () => {
             </span>
           </div>
           <div className="hidden md:block ">
-            <div className="ml-auto flex items-center">
-              <Link to='/' className=" hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+            <div className="ml-auto flex items-center gap-3 font-bold">
+              <ActiveLink to='/' className=" hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                 Home
-              </Link>
-              <Link to='/alltoys'  className=" hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+              </ActiveLink>
+              <ActiveLink to='/alltoys'  className=" hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                 All Toys
-              </Link>
-              <Link to='/mytoys' className=" hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+              </ActiveLink>
+              <ActiveLink to='/mytoys' className=" hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                 My Toys
-              </Link>
-              <Link to='/addtoy' className=" hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+              </ActiveLink>
+              <ActiveLink to='/addtoy' className=" hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                 Add a Toy
-              </Link>
-              <Link to='/blog' className=" hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+              </ActiveLink>
+              <ActiveLink to='/blog' className=" hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                blog
-              </Link>
-              <Link to='/register' className=" hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+              </ActiveLink>
+              <ActiveLink to='/register' className=" hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                Register
-              </Link>
+              </ActiveLink>
             </div>
           </div>
         </div>
@@ -56,25 +58,25 @@ const Navbar = () => {
       {/* Responsive menu */}
       {isMenuOpen && (
         <div className="md:hidden transition duration-300 ease-in-out">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <Link to='/' className=" hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+          <div className="flex gap-3 font-bold items-center flex-col px-2 pt-2 pb-3 space-y-1 sm:px-3 text-left">
+            <ActiveLink to='/' className=" hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
               Home
-            </Link>
-            <Link to='/alltoys' className=" hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+            </ActiveLink>
+            <ActiveLink to='/alltoys' className=" hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
               All Toys
-            </Link>
-            <Link to='/mytoys' href="#" className=" hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+            </ActiveLink>
+            <ActiveLink to='/mytoys' href="#" className=" hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
               My Toys
-            </Link>
-            <Link to='/addtoy' href="#" className=" hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+            </ActiveLink>
+            <ActiveLink to='/addtoy' href="#" className=" hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
               Add a toy
-            </Link>
-            <Link to='/blog' href="#" className=" hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+            </ActiveLink>
+            <ActiveLink to='/blog' href="#" className=" hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
               blog
-            </Link>
-            <Link to='/register' href="#" className=" hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+            </ActiveLink>
+            <ActiveLink to='/register' href="#" className=" hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
               register
-            </Link>
+            </ActiveLink>
           </div>
         </div>
       )}

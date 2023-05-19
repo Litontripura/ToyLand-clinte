@@ -1,28 +1,41 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Player } from "@lottiefiles/react-lottie-player";
 import lotti from '../../assets/lotti/lotti.json'
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+
+  const { createUser ,googleSignIn} = useContext(AuthContext);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from?.pathname || '/'
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setError('')
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
     const photo = form.photo.value;
-
+    if(password.length <6){
+      setError('passoword should be at leastn 6 characters')
+      return
+    }
+    if(!email.trim() || !password.trim()){
+      setError('please enter valid email and password')
+      return
+    }
     const createdUser = {
       name, email, password, photo
     };
 
     createUser(email, password)
       .then(result => {
+        navigate(from,{replace: true})
         const createdUser = result.user;
         console.log(createdUser);
         setSuccess('User created successfully!');
@@ -31,12 +44,26 @@ const Register = () => {
         setError(error.message);
       });
   };
+  const handleGoogleSignIn =()=>{
+    googleSignIn()
+    .then(result=>{
+      navigate(from,{replace: true})
+      const loggedUser = result.user;
+      console.log(loggedUser);
+    })
+    .catch(error=>{
+      setError(error.message)
+    })
+  }
 
   return (
     <div className="md:mt-5 md:w-2/3 mx-auto p-10 rounded-lg">
       <div className="md:grid grid-cols-2 gap-2 shadow-xl rounded-lg">
         <div className="md:mt-5 h-[500px] w-[380px] text-center lg:text-left bg-base-100 md:p-10 rounded-3xl mx-auto mb-5">
           <h1 className="text-3xl font-bold text-[#0C5AE5] text-center">Please Sign Up</h1>
+          {
+            error && <p className="text-red-500 text-center">{error}</p>
+          }
           <div className="mt-14 mx-auto">
             <Player
               autoplay
@@ -103,6 +130,9 @@ const Register = () => {
             </div>
             <div className="form-control mt-6">
               <input className="bg-[#0C5AE5] p-3 font-bold text-white text-lg rounded-lg" type="submit" value="Please sign up" />
+            </div>
+            <div>
+              <button onClick={handleGoogleSignIn}>google</button>
             </div>
           </div>
         </form>
