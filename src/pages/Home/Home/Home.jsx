@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Banner from "./Banner";
 import ToysCard from "./ToysCard";
+import Galary from "./Galary";
+import Banner2 from "./Banner2";
+import Banner3 from "./Banner3";
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState("Language");
@@ -8,7 +11,7 @@ const Home = () => {
 
   useEffect(() => {
     if (activeTab) {
-      fetch(`http://localhost:5000/toystext/${activeTab}`)
+      fetch(`https://assignment-11-server-five-omega.vercel.app/toystext/${activeTab}`)
         .then((res) => res.json())
         .then((data) => setAllToys(data));
     }
@@ -22,6 +25,9 @@ const Home = () => {
   return (
     <div>
       <Banner></Banner>
+      <Galary></Galary>
+      <div>
+        <h1 className="text-orange-600 font-bold text-3xl text-center my-5">Shop By Catagory</h1>
       <div className="tabs tabs-boxed flex justify-center">
         <button
           onClick={() => handleActiveTab("Math")}
@@ -46,6 +52,7 @@ const Home = () => {
           Science Toys
         </button>
       </div>
+      </div>
       <div className="md:grid grid-cols-3 justify-center gap-6 my-5 mx-auto">
         {allToys.map((alltoy) => (
           <ToysCard
@@ -55,6 +62,8 @@ const Home = () => {
           />
         ))}
       </div>
+      <Banner2></Banner2>
+      <Banner3></Banner3>
     </div>
   );
 };

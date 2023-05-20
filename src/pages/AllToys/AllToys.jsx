@@ -3,43 +3,55 @@ import ToyCard from "./ToyCard/ToyCard";
 
 const AllToys = () => {
   const [toys, setToys] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+
   useEffect(() => {
-    fetch("http://localhost:5000/toys")
+    fetch("https://assignment-11-server-five-omega.vercel.app/toys")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setToys(data);
       });
   }, []);
-  return (
-    <div>
-      <h1 className="text-white">All toys :{toys.length}</h1>
-     
-   
-      <div className="overflow-x-auto w-full">
-  <table className="table w-full">
-   
-    <thead>
-      <tr>
-     
-        <th>Name</th>
-        <th>Job</th>
-        <th>Favorite Color</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      
-    {toys.map((toy) => (
-          <ToyCard key={toy._id} toy={toy}></ToyCard>
-        ))}
-    
-    </tbody>
 
-   
-    
-  </table>
-</div>
+  const handleSearchInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const filteredToys = toys.filter((toy) =>
+    toy.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  return (
+    <div className="overflow-x-auto w-full mb-5 p-10">
+      <h1 className="text-2xl font-bold text-orange-600 text-center my-10">
+        All Toys
+      </h1>
+      <div className="mb-5 text-center">
+        <input
+          type="text"
+          placeholder="Search by Toy Name"
+          value={searchQuery}
+          onChange={handleSearchInputChange}
+          className="border border-gray-400 rounded-md p-2 w-1/2 mx-auto"
+        />
+      </div>
+      <table className="table w-full">
+        <thead>
+          <tr>
+            <th>Toy Name</th>
+            <th>Sub Category</th>
+            <th>Price</th>
+            <th>Available Quantity</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredToys.map((toy) => (
+            <ToyCard key={toy._id} toy={toy} />
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

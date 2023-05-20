@@ -1,32 +1,52 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ToyCard = ({ toy }) => {
-  const { availablequantity, category, name, photo, price, rating } = toy;
+  const {_id, availablequantity, category,sellerName, name, photo, price, rating } = toy;
   console.log(toy);
   return (
     <tr>
    
     <td>
       <div className="flex items-center space-x-3">
-        <div className="avatar">
-          <div className="mask mask-squircle w-12 h-12">
-            <img src={photo} alt="Avatar Tailwind CSS Component" />
-          </div>
-        </div>
+       
         <div>
-          <div className="font-bold">{name}</div>
-          <div className="text-sm opacity-50">United States</div>
+          <div className="font-bold">{name} </div>
+        
         </div>
       </div>
     </td>
     <td>
-      Zemlak, Daniel and Leannon
-      <br/>
-      <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+      <div className="flex items-center space-x-3">
+       
+        <div>
+          <div className="font-bold">{category} Toys</div>
+        
+        </div>
+      </div>
     </td>
-    <td>Purple</td>
+    <td>
+      <div className="flex items-center space-x-3">
+       
+        <div>
+          <div className="font-bold">{price}</div>
+        
+        </div>
+      </div>
+    </td>
+    <td>
+      <div className="flex items-center space-x-3">
+       
+        <div>
+          <div className="font-bold">{availablequantity}</div>
+        
+        </div>
+      </div>
+    </td>
+    
+  
     <th>
-      <button className="btn btn-ghost btn-xs">details</button>
+      <Link to={`/alltoys/${_id}`}  className="btn btn-ghost btn-xs text-orange-400 font-bold">Vew Details</Link>
     </th>
   </tr>
   );

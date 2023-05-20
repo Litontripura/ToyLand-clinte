@@ -12,6 +12,8 @@ import Register from "../layouts/Register/Register";
 import AllToys from "../pages/AllToys/AllToys";
 import Blogs from "../pages/Blogs/Blogs";
 import Login from "../layouts/Login/Login";
+import SingleToy from "../pages/AllToys/SingleToy";
+import PrivateRoute from "./PrivateRoute";
 
 
   const router = createBrowserRouter([
@@ -30,6 +32,12 @@ import Login from "../layouts/Login/Login";
                     element:<AllToys></AllToys>
                   
                    
+                },
+                {
+                    path:'/alltoys/:id',
+                    element:<PrivateRoute><SingleToy></SingleToy></PrivateRoute>,
+                    loader:({params})=>fetch(`https://assignment-11-server-five-omega.vercel.app/singletoy/${params.id}`)
+
                 },
                 {
                     path:'/mytoys',

@@ -27,7 +27,7 @@ const ToyForm = () => {
       availablequantity,
       description,
     };
-    fetch("http://localhost:5000/toys", {
+    fetch("https://assignment-11-server-five-omega.vercel.app/toys", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

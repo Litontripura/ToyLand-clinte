@@ -9,7 +9,7 @@ const MyToys = () => {
     const [myToys, setMytoys]=useState([])
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/toys/${user?.email}`)
+        fetch(`https://assignment-11-server-five-omega.vercel.app/toys/${user?.email}`)
         .then(res=>res.json())
         .then(data=>{
             console.log(data);
