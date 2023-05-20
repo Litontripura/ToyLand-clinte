@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .main{
-    background-image: linear-gradient(to bottom, #011f38, rgb(168, 6, 168));
+    background-image: linear-gradient(to bottom, #034983, rgb(204, 10, 204));
 
     height: 100%;
     

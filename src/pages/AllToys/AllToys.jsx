@@ -4,13 +4,16 @@ import ToyCard from "./ToyCard/ToyCard";
 const AllToys = () => {
   const [toys, setToys] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch("https://assignment-11-server-five-omega.vercel.app/toys")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setToys(data);
+        setIsLoading(false);
       });
   }, []);
 
@@ -47,9 +50,17 @@ const AllToys = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredToys.map((toy) => (
-            <ToyCard key={toy._id} toy={toy} />
-          ))}
+          {isLoading ? (
+            <tr>
+              <td colSpan={5} className="text-center text-3xl font-bold text-orange-400">
+                Loading...
+              </td>
+            </tr>
+          ) : (
+            filteredToys.map((toy) => (
+              <ToyCard key={toy._id} toy={toy} />
+            ))
+          )}
         </tbody>
       </table>
     </div>
