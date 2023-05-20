@@ -1,20 +1,34 @@
 import React from "react";
 
 const ToyCard = ({ toy }) => {
-  const { name, category } = toy;
+  const { availablequantity, category, name, photo, price, rating } = toy;
   console.log(toy);
   return (
-    <div>
-      <div className="card w-96 bg-base-100 shadow-xl">
-        <div className="card-body">
-          <h2 className="card-title">Card title!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
+    <tr>
+   
+    <td>
+      <div className="flex items-center space-x-3">
+        <div className="avatar">
+          <div className="mask mask-squircle w-12 h-12">
+            <img src={photo} alt="Avatar Tailwind CSS Component" />
           </div>
         </div>
+        <div>
+          <div className="font-bold">{name}</div>
+          <div className="text-sm opacity-50">United States</div>
+        </div>
       </div>
-    </div>
+    </td>
+    <td>
+      Zemlak, Daniel and Leannon
+      <br/>
+      <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+    </td>
+    <td>Purple</td>
+    <th>
+      <button className="btn btn-ghost btn-xs">details</button>
+    </th>
+  </tr>
   );
 };
 

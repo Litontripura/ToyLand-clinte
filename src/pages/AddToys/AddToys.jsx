@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
+import Swal from 'sweetalert2'
 
 const ToyForm = () => {
+  const {user}= useContext(AuthContext)
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -24,16 +27,23 @@ const ToyForm = () => {
       availablequantity,
       description,
     };
-    fetch("https://assignment-11-server-five-omega.vercel.app/toys", {
+    fetch("http://localhost:5000/toys", {
       method: "POST",
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(userInfo),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if(data.insertedId){
+          Swal.fire({
+            icon:"success",
+            title:"Toy Added successfully",
+            text:`You added ${name} Toy`
+          })
+        }
+        form.reset()
       });
     console.log(userInfo);
   };
@@ -78,6 +88,7 @@ const ToyForm = () => {
               id="seller-name"
               name="sellerName"
               type="text"
+              defaultValue={user.displayName}
               placeholder="Seller Name"
             />
           </div>
@@ -89,6 +100,7 @@ const ToyForm = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="seller-email"
               name="sellerEmail"
+              defaultValue={user.email}
               type="email"
               placeholder="Seller Email"
             />
@@ -102,9 +114,9 @@ const ToyForm = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="sub-category"
             >
-              <option>Math Toys</option>
-              <option>Language Toys</option>
-              <option>Science Toys</option>
+              <option>Math</option>
+              <option>Language</option>
+              <option>Science</option>
             </select>
           </div>
           <div className="mb-4">
